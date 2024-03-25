@@ -17,6 +17,10 @@ from homeassistant.const import (
     UnitOfEnergy,
     UnitOfSpeed,
     UnitOfTemperature,
+    UnitOfPower,
+    UnitOfElectricPotential,
+    UnitOfElectricCurrent,
+    #POWER_VOLT_AMPERE_REACTIVE
 )
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -66,6 +70,38 @@ SENSOR_TYPES = (
         device_class=SensorDeviceClass.ILLUMINANCE,
         native_unit_of_measurement=LIGHT_LUX,
     ),
+    SensorEntityDescription(
+        key="forwardActiveEnergy",
+        device_class=SensorDeviceClass.ENERGY,
+        native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
+
+    ),
+    SensorEntityDescription(
+        key="reverseActiveEnergy",
+        device_class=SensorDeviceClass.ENERGY,
+        native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
+    ),
+   # SensorEntityDescription(
+   #     key="forwardRenergy",
+   #     device_class=SensorDeviceClass.POWER,
+   #     native_unit_of_measurement=POWER_VOLT_AMPERE_REACTIVE,
+   # ),
+   SensorEntityDescription(
+       key="activePower",
+        device_class=SensorDeviceClass.POWER,
+        native_unit_of_measurement=UnitOfPower.WATT,
+   ),
+   SensorEntityDescription(
+       key="voltage",
+       device_class=SensorDeviceClass.VOLTAGE,
+       native_unit_of_measurement=UnitOfElectricPotential.VOLT,
+   ),
+   SensorEntityDescription(
+       key="current",
+       device_class=SensorDeviceClass.CURRENT,
+       native_unit_of_measurement=UnitOfElectricCurrent.MILLIAMPERE,
+   ),
+
 )
 
 
